@@ -1,0 +1,11 @@
+%h2 Agregar Materias
+/ - matters = @course.matters
+= form_tag save_course_matters_path, method: :post do
+	= hidden_field_tag :course_id, @course.id
+	%table
+		- @matters.each do |matter|
+			%tr
+				= check_box_tag "matters[#{matter.id}]", matter.id
+				%span= matter.name
+	= button_tag :submit do
+		Guardar

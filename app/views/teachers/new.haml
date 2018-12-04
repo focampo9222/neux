@@ -1,0 +1,12 @@
+%h2 Nuevo curso
+- if @teacher.errors.present?
+	%label Por favor revisa lo siguiente:
+	- @teacher.errors.full_messages.each do |ms|
+		%p= ms
+= form_for @teacher do |f|
+	.name_field
+		= f.label :name, 'Nombre*'
+		= f.text_field :name
+	.action
+		= f.submit 'Guardar'
+

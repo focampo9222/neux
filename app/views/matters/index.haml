@@ -1,0 +1,14 @@
+%h2 Asignaturas
+
+= link_to 'Nueva', new_matter_path
+
+- if @matters.present?
+	%table
+		%tr
+			%th Id
+			%th Nombre
+		%tr
+			- @matters.each do |co|
+				%tr
+					%td= co.id
+					%td= co.name

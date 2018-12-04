@@ -1,0 +1,17 @@
+%h2 Cursos
+
+= link_to 'Nuevo', new_course_path
+
+- if @courses.present?
+	%table
+		%tr
+			%th Id
+			%th Nombre
+			%th{nowrap: 'nowrap'}
+		%tr
+			- @courses.each do |co|
+				%tr
+					%td= co.id
+					%td= co.name
+					%td
+						= link_to 'Agregar materia', add_course_matters_path(id: co.id)

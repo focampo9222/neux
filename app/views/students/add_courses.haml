@@ -1,0 +1,11 @@
+%h2 Agregar Cursos
+/ - matters = @course.matters
+= form_tag save_student_courses_path, method: :post do
+	= hidden_field_tag :student_id, @student.id
+	%table
+		- @courses.each do |course|
+			%tr
+				= check_box_tag "courses[#{course.id}]", course.id
+				%span= course.name
+	= button_tag :submit do
+		Guardar

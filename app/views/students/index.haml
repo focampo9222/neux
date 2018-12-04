@@ -1,0 +1,17 @@
+%h2 Estudiantes
+
+= link_to 'Nuevo', new_student_path
+- if @students.present?
+	%table
+		%tr
+			%th Id
+			%th Nombre
+			%th{nowrap: 'nowrap'}
+		%tr
+			- @students.each do |co|
+				%tr
+					%td= co.id
+					%td= co.name
+					%td
+						= link_to 'Agregar Curso', add_student_courses_path(id: co.id)
+						= link_to 'Agregar Nota', add_note_path(id: co.id)

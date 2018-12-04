@@ -1,0 +1,14 @@
+%h2 Profesores
+
+= link_to 'Nuevo', new_teacher_path
+
+- if @teachers.present?
+	%table
+		%tr
+			%th Id
+			%th Nombre
+		%tr
+			- @teachers.each do |co|
+				%tr
+					%td= co.id
+					%td= co.name

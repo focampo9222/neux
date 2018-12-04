@@ -1,0 +1,12 @@
+%h2 Nueva materia
+- if @matter.errors.present?
+	%label Por favor revisa lo siguiente:
+	- @matter.errors.full_messages.each do |ms|
+		%p= ms
+= form_for @matter do |f|
+	.name_field
+		= f.label :name, 'Nombre*'
+		= f.text_field :name
+	.action
+		= f.submit 'Guardar'
+

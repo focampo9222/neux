@@ -1,0 +1,19 @@
+%h2 Agregar nota
+%label="Estudiante #{@student.name}"
+- if @errors.present? 
+	- @errors.each do |err|
+		%p= err
+= form_tag students_save_note_path, method: :post do
+	= hidden_field_tag :student_id, @student.id
+	.point-container
+		= label_tag 'Calificación*'
+		= number_field_tag :point
+	.course-container
+		= label_tag 'Curso*'
+		= select_tag :course_id, options_from_collection_for_select(@courses, "id", "name", @course_id), include_blank: true
+	.matter-container
+		= label_tag 'Asignatura*'
+		= select_tag :matter_id, options_from_collection_for_select(@matters, "id", "name", @matter_id), include_blank: true
+	.action
+		= submit_tag :submit do
+			Guardar
